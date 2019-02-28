@@ -1,0 +1,38 @@
+<!--<meta http-equiv="Content-Security-Policy"-->
+      <!--content="default-src 'self' data:gap: http://www.visitsingapore.com-->
+  <!--https://ssl.gstatic.com 'unsafe-eval';-->
+  <!--style-src 'self' 'unsafe-inline';-->
+  <!--media-src *;-->
+  <!--script-src: 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI='-->
+<!--">-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+<div class="a1">
+  <h1>Hi {{currentUser.firstName}}!</h1>
+<p>You're logged in to my Application!!</p>
+<h3>All registered users:</h3>
+<!--<ul>-->
+  <!--<li *ngFor="let user of users">-->
+    <!--{{user.username}} ({{user.firstName}} {{user.lastName}})-->
+    <!-- - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>-->
+  <!--</li>-->
+<!--</ul>-->
+  <table>
+    <thead>
+    <tr>
+      <td>Username</td>
+      <td>Firstname</td>
+      <td>Lastname</td>
+      <td>Action</td>
+    </tr>
+    </thead>
+    <tr *ngFor="let user of users">
+      <td> {{user.username}}</td>
+      <td> {{user.firstName}}</td>
+      <td> {{user.lastName}}</td>
+      <td><a (click)="deleteUser(user.id)" class="text-danger">Delete</a></td>
+      <td><a (click)="updateUser(user)" class="text-success">Edit</a></td>
+    </tr>
+  </table>
+<p><a [routerLink]="['/login']">Logout</a></p>
+
+  </div>

@@ -1,0 +1,162 @@
+<div id="fb-root"></div>
+<!--<meta http-equiv="Content-Security-Policy"-->
+      <!--content="default-src 'self' data:gap: http://www.visitsingapore.com-->
+  <!--https://ssl.gstatic.com 'unsafe-eval';-->
+  <!--style-src 'self' 'unsafe-inline';-->
+  <!--media-src *;-->
+  <!--script-src: 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI='-->
+<!--">-->
+<meta name="google-signin-client_id" content="257228945317-s5ojopj1ne6tp6sd8vb6v154jn5fn8n6.apps.googleusercontent.com
+">
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+
+<script async defer src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2&appId=380618849429488&autoLogAppEvents=1"></script>
+<script>
+
+  // This is called with the results from from FB.getLoginStatus().
+  function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else {
+      // The person is not logged into your app or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '152976655602112',
+      cookie     : true,  // enable cookies to allow the server to access
+                          // the session
+      xfbml      : true,  // parse social plugins on this page
+      version    : 'v3.2' // The Graph API version to use for the call
+    });
+
+    // Now that we've initialized the JavaScript SDK, we call
+    // FB.getLoginStatus().  This function gets the state of the
+    // person visiting this page and can return one of three states to
+    // the callback you provide.  They can be:
+    //
+    // 1. Logged into your app ('connected')
+    // 2. Logged into Facebook, but not your app ('not_authorized')
+    // 3. Not logged into Facebook and can't tell if they are logged into
+    //    your app or not.
+    //
+    // These three cases are handled in the callback function.
+
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+  }
+</script>
+
+<!--<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1" onlogin="checkLoginState();"data-show-faces="false">Login w/ Facebook</div>-->
+<!--<div class="fb-login-button">Login with Facebook</div>-->
+
+<div id="status">
+</div>
+<!--<button class="fb-login-button" scope="public_profile" onlogin="checkLoginState();"data-show-faces="false"> Login With Facebook </button>-->
+<div class="grp">
+
+  <div>
+<h2> Login Form </h2></div>
+  <div class="d1">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" formControlName="username" class="form-control s1" [ngClass]="{ 'is-invalid':submitted && f.username.errors}" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+       <div *ngIf="f.username.errors.required"> Username is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" formControlName="password" class="form-control s1" [ngClass]="{ 'is-invalid':submitted && f.username.errors}" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">Password is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-success">Login</button>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh
+    +QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh
+    +QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo
+    /IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo
+    /IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh
+    +QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <button [routerLink]="['/register']" class="btn btn-link">Register</button>
+
+    <!--<div>-->
+      <!--<button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span class="fa fa-facebook"></span>Login With Facebook</button>-->
+      <!--<button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fa fa-google"></span>Login With Google</button>-->
+      <!--<div class="fb-login-button fb1" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true" data-onlogin="checkLoginState();"></div>-->
+    <!--</div>-->
+
+    <!--<div class="card-block">-->
+      <!--<h4 class="card-title">Not signed in</h4>-->
+      <!--<p class="card-text">Sign in with</p>-->
+    <!--</div>-->
+    <div class="card-block">
+      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fa fa-google"></span>Signin With Google</button>
+      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span class="fa fa-facebook"></span>Signin With Facebook</button>
+      <button class="btn btn-social-icon btn-linkedin mx-1" (click)="signInWithLinkedIn()"><span class="fa fa-linkedin">Signin With LinkedIn</span></button>
+
+      <div class="fb-login-button fb1" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true" data-onlogin="checkLoginState();"></div>
+
+    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!--<button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()"><span class="fa fa-facebook"></span>Login With Facebook</button>-->
+
+    <!--&lt;!&ndash;<button type="button" class="btn" (click)="submitLogin();">Login with facebook</button>&ndash;&gt;-->
+    <!--<div class="fb-login-button fb1" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true" data-onlogin="checkLoginState();"></div>-->
+
+  </div>
+</form>
+  </div>
+</div>

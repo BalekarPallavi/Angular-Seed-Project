@@ -1,0 +1,11 @@
+body{
+  background-color: antiquewhite!important;
+}
+
+table, th, td {
+  border: 1px solid lightgrey;
+}
+
+thead{
+  font-weight: bold;
+}

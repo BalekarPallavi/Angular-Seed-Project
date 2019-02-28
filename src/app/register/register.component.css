@@ -1,0 +1,28 @@
+.grp{
+  text-align: center;
+  /*background-color: aliceblue;*/
+  margin-top: 150px;
+  line-height: 40px;
+  height:310px;
+}
+
+.d1{
+  font-size: 20px;
+}
+
+button{
+  width: 79px;
+  height: 31px;
+  margin-right: 24px;
+}
+
+a{
+  padding-left: 39px;
+  text-decoration: none;
+}
+
+.s1{
+  margin-left: 14px;
+  width: 450px;
+  height: 30px;
+}

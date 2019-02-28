@@ -1,0 +1,71 @@
+body{
+  background-color: bisque!important;
+}
+
+.grp{
+  text-align: center;
+
+  margin-top: 150px;
+  line-height: 40px;
+  height:220px;
+}
+
+.s1{
+  margin-left: 14px;
+  width: 450px;
+  height: 30px;
+}
+
+.d1{
+  font-size: 20px;
+}
+
+button{
+  width: 148px;
+  height: 31px;
+  margin-right: 24px;
+}
+
+a{
+  padding-left: 39px;
+  text-decoration: none;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+:host {
+  height: 100%;
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.card {
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.fb1{
+  padding-left: 28px;
+  padding-top: 18px;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+:host {
+  height: 100%;
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.card {
+  width: 20rem;
+  margin: 0 auto;
+}
